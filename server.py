@@ -2,6 +2,19 @@ import socket, select
 import sys
 
 #Function to send message to all connected clients
+def send_to_all_tata ():
+	message = 'server_tata'
+	#Message not forwarded to server and sender itself
+	for socket in connected_list:
+		if socket != server_socket :
+			try :
+				socket.send(message)
+			except :
+				# if connection not available
+				socket.close()
+				connected_list.remove(socket)
+
+#Function to send message to all connected clients
 def send_to_all (sock, message):
 	#Message not forwarded to server and sender itself
 	for socket in connected_list:
