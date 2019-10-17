@@ -1,4 +1,5 @@
 import socket, select
+import sys
 
 #Function to send message to all connected clients
 def send_to_all (sock, message):
@@ -19,7 +20,14 @@ if __name__ == "__main__":
 	# List to keep track of socket descriptors
 	connected_list = []
 	buffer = 4096
-	port = 5001
+
+	# port = 5001
+	if len(sys.argv)<2:
+		port = int(raw_input("Enter Port to listen: "))
+	else:
+		port = int(sys.argv[1])
+
+    # port = 5001
 
 	server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
