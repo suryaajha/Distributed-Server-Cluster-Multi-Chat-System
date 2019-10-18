@@ -61,12 +61,16 @@ if __name__ == "__main__":
 		port = int(raw_input("Enter Port to listen: "))
 	else:
 		port = int(sys.argv[1])
+		if len(sys.argv) == 3:
+			hostname = sys.argv[2]
+		else:
+			hostname = 'localhost'
 
     # port = 5001
 
 	server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-	server_socket.bind(("localhost", port))
+	server_socket.bind((hostname, port))
 	server_socket.listen(10) #listen atmost 10 connection at one time
 
 	# Add server socket to the list of readable connections
