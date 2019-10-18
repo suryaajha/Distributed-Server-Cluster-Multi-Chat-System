@@ -6,7 +6,7 @@ def display() :
 	sys.stdout.write(you)
 	sys.stdout.flush()
 
-def restart(host, port, name, ):
+def restart(host, port, name):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(2)
     
@@ -33,7 +33,7 @@ def restart(host, port, name, ):
                 if str(data) == 'server_tata':
                     restart(host, port, name)
                     return 
-                    
+
                 if not data :
                     print '\33[31m\33[1m \rDISCONNECTED!!\n \33[0m'
                     sys.exit()
